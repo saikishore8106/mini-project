@@ -1,11 +1,11 @@
-async function callApi() {
-    try {
-        // internal k8s service name + port
-        const apiUrl = "http://backend-service:5000/api";
-        const res = await fetch(apiUrl);
-        const txt = await res.text();
-        document.getElementById("response").innerText = txt;
-    } catch (err) {
-        document.getElementById("response").innerText = "Backend not reachable";
-    }
+function callBackend() {
+    fetch("http://backend-service:5000")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("result").innerText = data;
+        })
+        .catch(error => {
+            document.getElementById("result").innerText = "Backend not reachable";
+            console.error(error);
+        });
 }
