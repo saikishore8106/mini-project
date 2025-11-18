@@ -1,4 +1,4 @@
-function callBackend() {
+function  callBackend(){
     fetch("http://backend-service:5000")
         .then(response => response.text())
         .then(data => {
